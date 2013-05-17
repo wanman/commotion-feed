@@ -10,10 +10,10 @@ include $(TOPDIR)/rules.mk
 SERVAL_VERSION:=batphone-release-0.90
 
 PKG_NAME:=olsrd
-PKG_VERSION:=0.6.5
+PKG_VERSION:=0.6.5.4
 PKG_RELEASE:=2
 
-PKG_SOURCE_URL:=https://github.com/opentechinstitute/olsrd/archive
+PKG_SOURCE_URL:=https://github.com/westbywest/olsrd/archive
 PKG_SOURCE_VERSION:=release-$(PKG_VERSION)
 
 PKG_SOURCE:=$(PKG_SOURCE_VERSION).tar.gz
