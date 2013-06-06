@@ -4,7 +4,7 @@ MODULE_NAME:=commotion-daemon-bundle
 MODULE_TITLE:=Commotion Daemon Bundle
 
 PKG_NAME:=commotion-daemon-bundle
-PKG_VERSION:=master
+PKG_VERSION:=0.1
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
@@ -63,6 +63,7 @@ define Package/commotiond/install
 	$(INSTALL_DIR) $(1)/usr/share/commotion/patches
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/commotiond $(1)/usr/sbin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/openwrt/etc/uci-defaults/commotiond $(1)/etc/uci-defaults
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/openwrt/etc/config/commotiond $(1)/etc/config
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/openwrt/etc/init.d/commotiond $(1)/etc/init.d
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/openwrt/lib/netifd/commotion.dhcp.script $(1)/lib/netifd
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/openwrt/lib/netifd/proto/commotion.sh $(1)/lib/netifd/proto
