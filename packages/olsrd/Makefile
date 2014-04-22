@@ -7,26 +7,22 @@
 
 include $(TOPDIR)/rules.mk
 
-SERVAL_VERSION:=batphone-release-0.90
-COMMOTION_VERSION:=commotion-0.1
+COMMOTION_VERSION:=commotion
 
 PKG_NAME:=olsrd
 PKG_VERSION:=0.6.5.4-$(COMMOTION_VERSION)
 PKG_RELEASE:=1
 
-PKG_SOURCE_URL:=https://github.com/opentechinstitute/olsrd/archive
+PKG_SOURCE_URL:=https://github.com/opentechinstitute/olsrd/archive/$(COMMOTION_VERSION).tar.gz?
 PKG_SOURCE_VERSION:=$(COMMOTION_VERSION)
 
-PKG_SOURCE:=$(PKG_SOURCE_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_SOURCE_VERSION)
 
 PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
-
-TARGET_CFLAGS += $(FPIC) -idirafter$(BUILD_DIR)/serval-dna-$(SERVAL_VERSION) -I$(BUILD_DIR)/serval-dna-$(SERVAL_VERSION)/nacl/include
-TARGET_LDFLAGS += -L$(BUILD_DIR)/serval-dna-$(SERVAL_VERSION)/
 
 define Package/olsrd/template
   SECTION:=net
@@ -67,7 +63,7 @@ endef
 
 define Package/olsrd-mod-dnssd
   $(call Package/olsrd/template)
-  DEPENDS:=olsrd +libldns
+  DEPENDS:=olsrd +libldns +avahi-daemon
   TITLE:=Forward mDNS/DNS-SD packets with custom TTL values
   MAINTAINER:=Dan Staples <danstaples AT opentechinstitute DOT org>
 endef
@@ -104,7 +100,7 @@ endef
 
 define Package/olsrd-mod-mdp
   $(call Package/olsrd/template)
-  DEPENDS:=olsrd +serval-dna
+  DEPENDS:=olsrd +commotiond
   TITLE:=Sign olsrd traffic with a Serval key
   MAINTAINER:=Will Hawkins <hawkinsw AT opentechinstitute DOT org>
 endef
