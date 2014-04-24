@@ -7,7 +7,7 @@
 
 include $(TOPDIR)/rules.mk
 
-COMMOTION_VERSION:=commotion-0.6.6
+COMMOTION_VERSION:=commotion
 
 PKG_NAME:=olsrd
 PKG_VERSION:=0.6.6.1-$(COMMOTION_VERSION)
